@@ -1,25 +1,28 @@
-function incstr(id, alph) {
+function incstr(str, alph) {
 	if (!alph) alph = incstr.alphabet
-	if (!id) return alph[0]
+	if (!str) return alph[0]
 
 	//convert to array of digits
-	id = id.split('')
-	for (let i=0; i<id.length; i++) { id[i] = alph.indexOf(id[i]) }
+	str = str.split('')
+	for (let i=0; i<str.length; i++) {
+		str[i] = alph.indexOf(str[i])
+		if (str[i] == -1) throw new Error('Char in input string is not in alphabet')
+	}
 	let maxDigit = alph.length-1
 
 	//increment digits starting from the rightmost
 	let i
-	for (i=id.length-1; i>=0; i--) {
-		if (id[i] == maxDigit) { id[i] = 0; continue }
-		id[i]++;
+	for (i=str.length-1; i>=0; i--) {
+		if (str[i] == maxDigit) { str[i] = 0; continue }
+		str[i]++;
 		break
 	}
-	if (i < 0) { id.unshift(1) } //add new digit if all existing were incremented
+	if (i < 0) { str.unshift(0) } //add new digit if all existing were incremented
 
 	//convert back to string
-	for (let i=0; i<id.length; i++) { id[i] = alph[id[i]] }
-	id = id.join('')
-	return id
+	for (let i=0; i<str.length; i++) { str[i] = alph[str[i]] }
+	str = str.join('')
+	return str
 }
 
 incstr.alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'

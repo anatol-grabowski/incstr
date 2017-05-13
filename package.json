@@ -1,0 +1,33 @@
+{
+  "name": "incstr",
+  "version": "1.0.0",
+  "description": "Increment string or generate sequential string ids",
+  "main": "incstr.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grabantot/incstr.git"
+  },
+  "keywords": [
+    "increment",
+    "string",
+    "incremental",
+    "sequential",
+    "id",
+    "generator",
+    "nextId",
+    "incstr",
+    "strinc"
+  ],
+  "author": "grabantot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grabantot/incstr/issues"
+  },
+  "homepage": "https://github.com/grabantot/incstr#readme"
+}
