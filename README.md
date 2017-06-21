@@ -4,8 +4,7 @@ Increment string or generate sequential string ids
 Install:
 `npm install incstr`
 
-
-Default alphabet is `'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`, it can be changed by changing`incstr.alphabet`.
+Default alphabet is `incstr.alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`.
 
 Pass a string to increment using default alphabet:
 
@@ -17,7 +16,7 @@ Pass a string to increment using default alphabet:
     i = incstr(i) //"01"
 
 
-Pass a string and alphabet to use:
+Pass a string and an alphabet to use:
 
     incstr("a", "ab") //"b"
     incstr("b", "ab") //"aa"
@@ -39,5 +38,3 @@ Generate ids:
 
     let nextId = incstr.idGenerator({lastId:'cc', alphabet:'abc'})
     nextId() //'aaa'
-
-
