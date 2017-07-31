@@ -1,42 +1,41 @@
-function incstr(str, alph) {
-	if (!alph) alph = incstr.alphabet
-	if (!str) return alph[0]
+function incstr (str, alph = incstr.alphabet, numlike = incstr.numberlike) {
+  if (!str) return alph[0]
 
-	//convert to array of digits
-	str = str.split('')
-	for (let i=0; i<str.length; i++) {
-		str[i] = alph.indexOf(str[i])
-		if (str[i] == -1) throw new Error('Char in input string is not in alphabet')
-	}
-	let maxDigit = alph.length-1
+  // convert to array of digits
+  const digs = str.split('').map(ch => alph.indexOf(ch))
 
-	//increment digits starting from the rightmost
-	let i
-	for (i=str.length-1; i>=0; i--) {
-		if (str[i] == maxDigit) { str[i] = 0; continue }
-		str[i]++;
-		break
-	}
-	if (i < 0) { str.unshift(0) } //add new digit if all existing were incremented
+  // increment digits starting from the rightmost
+  const maxDigit = alph.length - 1
+  for (var i = digs.length - 1; i >= 0; i--) { // !!! var not let
+    if (digs[i] === -1) throw new RangeError(`Character "${str[i]}" is not in the alphabet "${alph}"`)
+    if (digs[i] === maxDigit) {
+      digs[i] = 0
+      continue
+    }
+    digs[i]++
+    break
+  }
+  if (i < 0) { digs.unshift(numlike ? 1 : 0) } // add new digit
 
-	//convert back to string
-	for (let i=0; i<str.length; i++) { str[i] = alph[str[i]] }
-	str = str.join('')
-	return str
+  // convert back to string
+  return digs.map(dig => alph[dig]).join('')
 }
 
-incstr.alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+incstr.alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+incstr.numberlike = false
+// prefix and suffix don't make sense here cause str = incstr('id3') will produce 'idid4'
 
-incstr.idGenerator = function(opts={}) {
-	if (!opts.lastId) opts.lastId = undefined
-	if (!opts.alphabet) opts.alphabet = incstr.alphabet //to keep it independent from is.alph
-	return function() {
-		opts.lastId = incstr(opts.lastId, opts.alphabet)
-		id = opts.lastId
-		if (opts.prefix) { id = opts.prefix + id }
-		if (opts.suffix) { id = id + opts.suffix }
-		return id
-	}
+// generator syntax would be too cumbersome 'nextId.next().value'
+incstr.idGenerator = function ({ lastId,
+                                 alphabet = incstr.alphabet,
+                                 numberlike = incstr.numberlike,
+                                 prefix = '',
+                                 suffix = '' }) {
+  return function nextId () {
+    lastId = incstr(lastId, alphabet, numberlike)
+    return prefix + lastId + suffix
+  }
 }
 
-module.exports = incstr
+if (this.window && this === window) this.incstr = incstr
+else module.exports = incstr

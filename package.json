@@ -1,18 +1,47 @@
 {
-  "name": "incstr",
-  "version": "1.0.0",
+  "_from": "incstr",
+  "_id": "incstr@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha1-VEzu0PgXvzxtbQwWhaeNGOaRmLE=",
+  "_location": "/incstr",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "incstr",
+    "name": "incstr",
+    "escapedName": "incstr",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/incstr/-/incstr-1.0.2.tgz",
+  "_shasum": "544ceed0f817bf3c6d6d0c1685a78d18e69198b1",
+  "_spec": "incstr",
+  "_where": "d:\\Grabowski\\_TEMP\\fhe\\_3_PROJECTS",
+  "author": {
+    "name": "grabantot"
+  },
+  "bugs": {
+    "url": "https://github.com/grabantot/incstr/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
   "description": "Increment string or generate sequential string ids",
-  "main": "incstr.js",
+  "devDependencies": {},
   "directories": {
     "test": "test"
   },
-  "scripts": {
-    "test": "mocha test"
+  "dist": {
+    "shasum": "b50cc18c4321598546b3419244a1735a4145fbb1",
+    "tarball": "https://registry.npmjs.org/incstr/-/incstr-1.0.1.tgz"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/grabantot/incstr.git"
-  },
+  "homepage": "https://github.com/grabantot/incstr#readme",
   "keywords": [
     "increment",
     "string",
@@ -22,12 +51,25 @@
     "generator",
     "nextId",
     "incstr",
-    "strinc"
+    "strinc",
+    "bruteforce"
   ],
-  "author": "grabantot",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/grabantot/incstr/issues"
+  "main": "incstr.js",
+  "maintainers": [
+    {
+      "name": "grabantot",
+      "email": "grabantot@gmail.com"
+    }
+  ],
+  "name": "incstr",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grabantot/incstr.git"
   },
-  "homepage": "https://github.com/grabantot/incstr#readme"
+  "scripts": {
+    "test": "mocha"
+  },
+  "version": "1.1.2"
 }
