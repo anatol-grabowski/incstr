@@ -10,7 +10,7 @@ nextStr = incstr(str,
                  [numberlike=incstr.numberlike])
 ```
 - `str` - string to increment;
-- `alphabet` - alphabet to use (default `'A..Za..z0..9'`, v1.0.2 used `'0..9a..zA..Z'`);
+- `alphabet` - alphabet to use (default `'A..Za..z0..9'`);
 - `numberlike` - `'BA'` after `'9'` instead of `'AA'`(default `false`);
 - default `alphabet` can be set through `incstr.alphabet`;
 - default value for `numberlike` can be set through `incstr.numberlike`;
@@ -27,6 +27,9 @@ Possible options:
 - `options.numberlike`;
 - `options.prefix`;
 - `options.suffix`.
+
+`lastId` can also be accessed later through `nextId.lastId` property.
+Note that `idGenerator` is more than twice as fast as `incstr`.
 
 ## Examples
 Pass a string to increment using default alphabet:
@@ -52,7 +55,7 @@ incstr("1", "01", true) // "10", numberlike increment
 Generate ids:
 
 ```
-const nextId = incstr.idGenerator({})
+const nextId = incstr.idGenerator()
 id1 = nextId() // 'A'
 id2 = nextId() // 'B'
 ```
