@@ -5,6 +5,7 @@ Increment strings or generate sequential string ids in node.js or browser
 
 ### incstr
 ```
+const incstr = require('incstr')
 nextStr = incstr(str,
                  [alphabet=incstr.alphabet],
                  [numberlike=incstr.numberlike])
