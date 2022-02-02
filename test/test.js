@@ -39,4 +39,9 @@ describe('nextId = incstr.idGenerator(opts)', () => {
     let nextId = incstr.idGenerator({lastId: 'cc', alphabet: 'abc'})
     expect(nextId()).to.equal('aaa')
   })
+  it('nextId() throws if opts={lastId:"cc",alphabet:"ab"}', () => {
+    let nextId = incstr.idGenerator({ lastId: "cc", alphabet: "ab" });
+
+    expect(nextId).to.throw(RangeError);
+  });
 })
