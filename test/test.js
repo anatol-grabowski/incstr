@@ -20,7 +20,7 @@ describe('incstr()', () => {
     expect(incstr('111', '01', true)).to.equal('1000')
   })
   it('incstr("cc", "ab") throws', () => {
-    expect(incstr.bind(incstr, 'cc', 'ab')).to.throw(RangeError)
+    expect(incstr.bind(incstr, 'cc', 'ab')).to.throw(RangeError, 'Character "c" is not')
   })
 })
 
@@ -42,6 +42,6 @@ describe('nextId = incstr.idGenerator(opts)', () => {
   it('nextId() throws if opts={lastId:"cc",alphabet:"ab"}', () => {
     let nextId = incstr.idGenerator({ lastId: "cc", alphabet: "ab" });
 
-    expect(nextId).to.throw(RangeError);
+    expect(nextId).to.throw(RangeError, 'Character "c" is not');
   });
 })
