@@ -35,7 +35,7 @@ incstr.idGenerator = function ({ lastId = '',
   const maxDigit = alphabet.length - 1
   function nextId () {
     for (var i = digs.length - 1; i >= 0; i--) { // !!! var not let
-      if (digs[i] === -1) throw new RangeError(`Character "${str[i]}" is not in the alphabet "${alph}"`)
+      if (digs[i] === -1) throw new RangeError(`Character "${lastId[i]}" is not in the alphabet "${alphabet}"`)
       if (digs[i] === maxDigit) {
         digs[i] = 0
         continue
